@@ -1,0 +1,21 @@
+prototype(Gmedia.ResponsiveImageTag:Source) < prototype(Neos.Fusion:Component) {
+
+	@context {
+		asset = ${this.asset}
+		width = ${this.width}
+		height = ${ratio ? this.width * this.ratio : false}
+		allowCropping = ${this.allowCropping}
+	}
+
+	imageUri = Neos.Neos:ImageUri {
+		asset = ${asset}
+		width = ${width}
+		height = ${height}
+		allowCropping = ${allowCropping}
+	}
+
+	renderer = Neos.Fusion:Value {
+		value = ${props.imageUri + ' ' + props.width + 'w'}
+	}
+
+}

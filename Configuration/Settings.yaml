@@ -1,0 +1,8 @@
+Gmedia:
+  ResponsiveImageTag: [ ]
+
+Neos:
+  Neos:
+    fusion:
+      autoInclude:
+        Gmedia.ResponsiveImageTag: true

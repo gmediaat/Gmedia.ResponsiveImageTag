@@ -1,0 +1,44 @@
+prototype(Gmedia.ResponsiveImageTag:Tag) < prototype(Neos.Fusion:Component) {
+
+	fallbackWidth = null
+	breakpoints = ${[320, 640, 1280]}
+	allowCropping = false
+	ratio = false
+
+	class = Neos.Fusion:Join {
+		lazysizes = 'lazyload'
+		@glue = ' '
+	}
+
+	@context {
+		allowCropping = ${this.allowCropping}
+		asset = ${this.asset}
+		breakpoints = ${this.breakpoints}
+		fallbackWidth = ${this.fallbackWidth}
+		ratio = ${this.ratio}
+	}
+
+	fallback = Neos.Neos:ImageUri {
+		asset = ${asset}
+		width = ${fallbackWidth ? fallbackWidth : Array.first(breakpoints)}
+		height = ${ratio ? this.width * ratio : false}
+		allowCropping = ${allowCropping}
+	}
+
+	sources = Neos.Fusion:Loop {
+		@glue = ','
+		items = ${breakpoints}
+		itemName = 'width'
+		itemRenderer = Gmedia.ResponsiveImageTag:Source {
+			asset = ${asset}
+			width = ${width}
+			ratio = ${ratio}
+			allowCropping = ${allowCropping}
+		}
+	}
+
+	renderer = afx`
+		<img class={props.class} data-sizes="auto" data-src={props.fallback} data-srcset={props.sources} />
+	`
+
+}

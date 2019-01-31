@@ -1,0 +1,21 @@
+{
+    "description": "",
+    "type": "neos-package",
+    "name": "gmedia/responsive-image-tag",
+    "require": {
+        "neos/flow": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Gmedia\\ResponsiveImageTag\\": "Classes/"
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-development": "1.0.x-dev"
+        },
+        "neos": {
+            "package-key": "Gmedia.ResponsiveImageTag"
+        }
+    }
+}
