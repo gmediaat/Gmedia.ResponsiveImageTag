@@ -2,6 +2,7 @@
     "description": "",
     "type": "neos-package",
     "name": "gmedia/responsive-image-tag",
+    "version": "1.0.0",
     "require": {
         "neos/flow": "*"
     },
